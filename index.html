@@ -55,11 +55,16 @@
   }
   .wordmark{
     font-family:var(--serif);
-    font-size:24px;font-weight:700;
-    letter-spacing:.03em;
-    color:var(--ink);
+    font-size:34px;font-weight:700;
+    letter-spacing:.06em;
     text-decoration:none;
+    background:linear-gradient(120deg,var(--gold) 10%,var(--gold-hi) 45%,var(--gold) 90%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:var(--gold);
+    filter:drop-shadow(0 0 18px #C9A05033);
+    transition:filter .3s;
   }
+  .wordmark:hover{filter:drop-shadow(0 0 26px #C9A05066)}
   .wordmark em{font-style:normal;color:var(--gold)}
   .navlinks{display:flex;gap:30px;align-items:center}
   .navlinks a{
@@ -497,9 +502,9 @@
         <span class="line"><span>We'll handle</span></span>
         <span class="line"><span class="flare">the paperwork.</span></span>
       </h1>
-      <p class="lede">Permits, registrations, and DOT compliance for California
-        truckers — handled start to finish, so a missed filing never parks your
-        rig. <strong>Trusted by carriers since 2008.</strong></p>
+      <p class="lede">Permits, registrations, and DOT compliance — intrastate or
+        interstate, all 48 states — handled start to finish, so a missed filing
+        never parks your rig. <strong>Trusted by carriers since 2008.</strong></p>
       <div class="cta-row">
         <a class="btn btn-gold" href="tel:+18189374366">Call us today</a>
         <a class="btn btn-ghost" href="mailto:angela@4pl.la">Send an email</a>
@@ -579,7 +584,7 @@
       </div>
       <div class="cred reveal d2">
         <p class="k">Coverage</p>
-        <p class="v">CA <em>+</em> Interstate</p>
+        <p class="v">All <em>48</em> states</p>
       </div>
       <div class="cred reveal d3">
         <p class="k">When you call</p>
@@ -606,8 +611,8 @@
       <li class="reveal d1">
         <div class="row">
           <span class="num">1.2</span>
-          <h3>California permits</h3>
-          <p>MCP and the state-side paperwork for carriers running inside California.</p>
+          <h3>Intrastate permits</h3>
+          <p>CA Motor Carrier Permit and the state-side paperwork for carriers running in-state.</p>
           <span class="arrow">→</span>
         </div>
       </li>
@@ -615,7 +620,7 @@
         <div class="row">
           <span class="num">1.3</span>
           <h3>Interstate authority</h3>
-          <p>Filings and permits for crossing state lines. Every state is different — we know the differences.</p>
+          <p>Filings and permits for crossing state lines, in all 48 states. Every state is different — we know the differences.</p>
           <span class="arrow">→</span>
         </div>
       </li>
