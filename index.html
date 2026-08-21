@@ -392,19 +392,25 @@
     color:var(--gold-hi)!important;
     margin:0!important;
   }
-  .photo-slot{
+  .art-slot{
     border:1px solid var(--hair2);
     background:
+      radial-gradient(80% 60% at 50% 42%, #16233A 0%, transparent 70%),
       linear-gradient(160deg,var(--card) 0%,var(--bg2) 100%);
     aspect-ratio:4/5;
-    display:flex;align-items:center;justify-content:center;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:26px;
     position:relative;
+    padding:30px 22px;
   }
-  .photo-slot::before{content:"";position:absolute;inset:12px;border:1px dashed var(--hair2)}
-  .photo-slot span{
-    font-family:var(--mono);font-size:11px;letter-spacing:.18em;
-    text-transform:uppercase;color:var(--dim);
-    text-align:center;line-height:2.2;padding:0 26px;
+  .art-slot::before{content:"";position:absolute;inset:12px;border:1px solid var(--hair);pointer-events:none}
+  .art-slot svg{width:100%;max-width:330px;height:auto;filter:drop-shadow(0 0 24px #C9A05022)}
+  .art-slot .truck-line{stroke:var(--gold);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .art-slot .truck-thin{stroke:var(--gold);fill:none;stroke-width:1.1;opacity:.65}
+  .art-slot .truck-hi{stroke:var(--gold-hi);fill:none;stroke-width:2.2;stroke-linecap:round}
+  .art-slot figcaption{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--dim);text-align:center;line-height:2;
   }
   @media(max-width:860px){.about{grid-template-columns:1fr;gap:40px}}
 
@@ -703,9 +709,54 @@
         <p class="reveal d2">Whether you found us through a driver or found us right here — call,
         and we'll figure out what your operation needs.</p>
       </div>
-      <div class="photo-slot reveal d2">
-        <span>Photo —<br>the Glendale office<br>[to be added]</span>
-      </div>
+      <figure class="art-slot reveal d2" style="margin:0">
+        <svg viewBox="0 0 400 260" aria-label="Line drawing of a semi truck">
+          <!-- ground -->
+          <line class="truck-thin" x1="10" y1="232" x2="390" y2="232"/>
+          <line class="truck-thin" x1="30" y1="244" x2="150" y2="244"/>
+          <line class="truck-thin" x1="250" y1="244" x2="370" y2="244"/>
+          <!-- chassis -->
+          <path class="truck-line" d="M22 206 H378"/>
+          <!-- hood (front at left) -->
+          <path class="truck-line" d="M22 206 V162 Q22 154 30 152 L96 144 L118 100"/>
+          <!-- grille detail -->
+          <path class="truck-thin" d="M30 162 V196 M40 160 V196 M50 159 V196 M60 158 V196"/>
+          <!-- bumper -->
+          <path class="truck-line" d="M18 206 V186 H30"/>
+          <!-- windshield + cab roofline -->
+          <path class="truck-line" d="M118 100 Q120 92 128 92 H188 V206"/>
+          <!-- windshield glass -->
+          <path class="truck-thin" d="M126 104 L112 144 H150 V104 Z"/>
+          <!-- door + handle -->
+          <path class="truck-thin" d="M156 104 V196 M160 148 H172"/>
+          <!-- sleeper box -->
+          <path class="truck-line" d="M188 92 H268 Q276 92 276 100 V206"/>
+          <!-- sleeper window -->
+          <rect class="truck-thin" x="206" y="112" width="34" height="26" rx="3"/>
+          <!-- exhaust stacks -->
+          <path class="truck-hi" d="M192 92 V58 M200 92 V58"/>
+          <path class="truck-thin" d="M190 58 H202"/>
+          <!-- fuel tank -->
+          <rect class="truck-thin" x="196" y="212" width="58" height="14" rx="7"/>
+          <!-- frame rails behind sleeper -->
+          <path class="truck-line" d="M276 198 H372 M372 198 V206"/>
+          <path class="truck-thin" d="M292 198 V206 M320 198 V206"/>
+          <!-- fifth wheel -->
+          <path class="truck-thin" d="M330 198 L352 190 H366"/>
+          <!-- wheels: front + tandem rear -->
+          <circle class="truck-line" cx="72" cy="219" r="24"/>
+          <circle class="truck-thin" cx="72" cy="219" r="11"/>
+          <circle class="truck-line" cx="300" cy="219" r="24"/>
+          <circle class="truck-thin" cx="300" cy="219" r="11"/>
+          <circle class="truck-line" cx="352" cy="219" r="24"/>
+          <circle class="truck-thin" cx="352" cy="219" r="11"/>
+          <!-- mirror -->
+          <path class="truck-thin" d="M118 104 L108 100 V118"/>
+          <!-- marker lights on roof -->
+          <path class="truck-hi" d="M134 88 H138 M150 88 H154 M166 88 H170"/>
+        </svg>
+        <figcaption>Keeping rigs like yours on the road<br>Est. 2008 · Glendale, California</figcaption>
+      </figure>
     </div>
   </section>
 </div>
@@ -776,7 +827,7 @@
         var p = Math.min((t - t0)/dur, 1);
         p = 1 - Math.pow(1-p, 4);
         var n = Math.round(from + (to-from)*p);
-        el.textContent = to > 2100 ? n.toLocaleString('en-US') : n;
+        el.textContent = to < 1900 ? n.toLocaleString('en-US') : n; /* counts get commas, years don't */
         if(p < 1) requestAnimationFrame(tick);
       }
       requestAnimationFrame(tick);
